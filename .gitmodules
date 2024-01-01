@@ -1,0 +1,18 @@
+[submodule "nvim/pack/start/fish"]
+	path = nvim/pack/start/fish
+	url = git@github.com:nickeb96/fish.vim.git
+[submodule "nvim/pack/start/gitsigns"]
+	path = nvim/pack/start/gitsigns
+	url = git@github.com:lewis6991/gitsigns.nvim.git
+[submodule "nvim/pack/start/jsx-pretty"]
+	path = nvim/pack/start/jsx-pretty
+	url = git@github.com:MaxMEllon/vim-jsx-pretty.git
+[submodule "nvim/pack/start/python-pep8-indent"]
+	path = nvim/pack/start/python-pep8-indent
+	url = git@github.com:Vimjas/vim-python-pep8-indent.git
+[submodule "nvim/pack/start/vue"]
+	path = nvim/pack/start/vue
+	url = git@github.com:leafOfTree/vim-vue-plugin.git
+[submodule "nvim/pack/opt/robotframework"]
+	path = nvim/pack/opt/robotframework
+	url = git@github.com:rasjani/robotframework-vim.git

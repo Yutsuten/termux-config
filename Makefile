@@ -1,22 +1,22 @@
-.PHONY: fish git nvim nnn
+.PHONY: fish git nvim termux
 
 bold := $(shell tput bold)
 reset := $(shell tput sgr0)
 linux_config := https://raw.githubusercontent.com/Yutsuten/linux-config/main
 
-all: fish git nvim
+all: fish git nvim termux
 
 fish:
 	@echo '${bold}>> Fish settings <<${reset}'
 	rm -f ~/.config/fish/config.fish
 	rm -f ~/.config/fish/functions/*.fish
 	ln -sf $(CURDIR)/fish/config.fish ~/.config/fish/config.fish
-	ln -sf $(CURDIR)/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 	ln -sf $(CURDIR)/fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
 	curl -Lso ~/.config/fish/functions/ll.fish "${linux_config}/tools/fish/functions/ll.fish"
 	curl -Lso ~/.config/fish/functions/lo.fish "${linux_config}/tools/fish/functions/lo.fish"
 	curl -Lso ~/.config/fish/functions/ls.fish "${linux_config}/tools/fish/functions/ls.fish"
 	curl -Lso ~/.config/fish/functions/passgen.fish "${linux_config}/tools/fish/functions/passgen.fish"
+	curl -Ls "${linux_config}/tools/fish/functions/fish_prompt.fish" | sed 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' > ~/.config/fish/functions/fish_prompt.fish
 	curl -Ls "${linux_config}/tools/fish/functions/tts.fish" | sed 's/mpv --really-quiet/play-audio/g' > ~/.config/fish/functions/tts.fish
 
 git:
@@ -41,3 +41,7 @@ nvim:
 	curl -Lso ~/.local/share/nvim/site/ftplugin/fish.vim "${linux_config}/tools/neovim/ftplugin/fish.vim"
 	curl -Lso ~/.local/share/nvim/site/ftplugin/python.vim "${linux_config}/tools/neovim/ftplugin/python.vim"
 	curl -Lso ~/.local/share/nvim/site/doc/custom.txt "${linux_config}/tools/neovim/doc/custom.txt"
+
+termux:
+	ln -sf $(CURDIR)/termux/colors.properties ~/.termux/colors.properties
+	termux-reload-settings

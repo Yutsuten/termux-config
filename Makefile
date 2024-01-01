@@ -35,12 +35,12 @@ nvim:
 	mkdir -p ~/.config/nvim ~/.local/share/nvim/site/pack/all ~/.local/share/nvim/site/plugin ~/.local/share/nvim/site/ftplugin ~/.local/share/nvim/site/doc
 	ln -snf $(CURDIR)/nvim/pack/start ~/.local/share/nvim/site/pack/all/start
 	ln -snf $(CURDIR)/nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
-	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/neovim/init.vim"
-	curl -Lso $(CURDIR)/nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/neovim/pack/start/colorschemes/colors/onehalfdark.vim"
-	curl -Lso ~/.local/share/nvim/site/plugin/colorscheme.vim "${linux_config}/tools/neovim/plugin/colorscheme.vim"
-	curl -Lso ~/.local/share/nvim/site/ftplugin/fish.vim "${linux_config}/tools/neovim/ftplugin/fish.vim"
-	curl -Lso ~/.local/share/nvim/site/ftplugin/python.vim "${linux_config}/tools/neovim/ftplugin/python.vim"
-	curl -Lso ~/.local/share/nvim/site/doc/custom.txt "${linux_config}/tools/neovim/doc/custom.txt"
+	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/nvim/init.vim"
+	curl -Lso $(CURDIR)/nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/nvim/pack/start/colorschemes/colors/onehalfdark.vim"
+	curl -Lso ~/.local/share/nvim/site/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
+	curl -Lso ~/.local/share/nvim/site/ftplugin/fish.vim "${linux_config}/tools/nvim/ftplugin/fish.vim"
+	curl -Lso ~/.local/share/nvim/site/ftplugin/python.vim "${linux_config}/tools/nvim/ftplugin/python.vim"
+	curl -Lso ~/.local/share/nvim/site/doc/custom.txt "${linux_config}/tools/nvim/doc/custom.txt"
 
 termux:
 	ln -sf $(CURDIR)/termux/colors.properties ~/.termux/colors.properties

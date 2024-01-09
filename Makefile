@@ -12,6 +12,7 @@ fish:
 	rm -f ~/.config/fish/functions/*.fish
 	ln -sf $(CURDIR)/fish/config.fish ~/.config/fish/config.fish
 	ln -sf $(CURDIR)/fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
+	curl -Lso ~/.config/fish/functions/l1.fish "${linux_config}/tools/fish/functions/l1.fish"
 	curl -Lso ~/.config/fish/functions/ll.fish "${linux_config}/tools/fish/functions/ll.fish"
 	curl -Lso ~/.config/fish/functions/lo.fish "${linux_config}/tools/fish/functions/lo.fish"
 	curl -Lso ~/.config/fish/functions/ls.fish "${linux_config}/tools/fish/functions/ls.fish"

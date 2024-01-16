@@ -18,7 +18,7 @@ fish:
 	curl -Lso ~/.config/fish/functions/ls.fish "${linux_config}/tools/fish/functions/ls.fish"
 	curl -Lso ~/.config/fish/functions/passgen.fish "${linux_config}/tools/fish/functions/passgen.fish"
 	curl -Ls "${linux_config}/tools/fish/functions/fish_prompt.fish" | sed 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' > ~/.config/fish/functions/fish_prompt.fish
-	curl -Ls "${linux_config}/tools/fish/functions/tts.fish" | sed 's/mpv --really-quiet/play-audio/g' > ~/.config/fish/functions/tts.fish
+	curl -Ls "${linux_config}/tools/fish/functions/tts.fish" | sed 's/mpv --really-quiet \$$filename/termux-media-player play $$filename > \/dev\/null/g' > ~/.config/fish/functions/tts.fish
 
 git:
 	echo '${bold}>> Git settings <<${reset}'

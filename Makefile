@@ -47,6 +47,7 @@ nvim:
 	curl -Lso ~/.local/share/nvim/site/ftplugin/fish.vim "${linux_config}/tools/nvim/ftplugin/fish.vim"
 	curl -Lso ~/.local/share/nvim/site/ftplugin/python.vim "${linux_config}/tools/nvim/ftplugin/python.vim"
 	curl -Lso ~/.local/share/nvim/site/doc/custom.txt "${linux_config}/tools/nvim/doc/custom.txt"
+	nvim --cmd ':helptags ALL | :q' --headless
 
 termux:
 	ln -sf $(CURDIR)/termux/colors.properties ~/.termux/colors.properties

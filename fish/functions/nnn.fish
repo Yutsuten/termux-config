@@ -3,6 +3,7 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
         echo 'nnn is already running'
         return
     end
+    set -x NNN_PLUG 'g:-!gpg -d "$nnn" | less -N*'
     command nnn -AeouUT v $argv
 
     if test -e $HOME/.config/nnn/.lastd

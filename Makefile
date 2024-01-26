@@ -1,17 +1,17 @@
-.PHONY: fish git nvim termux
+.PHONY: fish git less nvim termux
 
 bold := $(shell tput bold)
 reset := $(shell tput sgr0)
 linux_config := https://raw.githubusercontent.com/Yutsuten/linux-config/main
 
-all: fish git nvim termux
+all: fish git less nvim termux
 
 fish:
 	@echo '${bold}>> Fish settings <<${reset}'
 	rm -f ~/.config/fish/config.fish
 	rm -f ~/.config/fish/functions/*.fish
-	ln -sf $(CURDIR)/fish/config.fish ~/.config/fish/config.fish
-	ln -sf $(CURDIR)/fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
+	ln -srf fish/config.fish ~/.config/fish/config.fish
+	ln -srf fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
 	curl -Lso ~/.config/fish/functions/l1.fish "${linux_config}/tools/fish/functions/l1.fish"
 	curl -Lso ~/.config/fish/functions/ll.fish "${linux_config}/tools/fish/functions/ll.fish"
 	curl -Lso ~/.config/fish/functions/lo.fish "${linux_config}/tools/fish/functions/lo.fish"
@@ -29,15 +29,22 @@ git:
 	git config --global commit.gpgsign true
 	curl -Lso ~/.config/gitignore "${linux_config}/tools/git/gitignore"
 
+less:
+	@echo '${bold}>> Less settings <<${reset}'
+	mkdir -p less
+	curl -Lso less/lessopen.fish "${linux_config}/tools/less/lessopen.fish"
+	curl -Lso less/lessclose.fish "${linux_config}/tools/less/lessclose.fish"
+	chmod u+x less/*.fish
+
 nvim:
 	@echo '${bold}>> Neovim settings <<${reset}'
 	rm -f ~/.config/nvim/init.vim ~/.config/nvim/*
 	rm -rf ~/.local/share/nvim/site/*
 	mkdir -p ~/.config/nvim ~/.local/share/nvim/site/pack/all ~/.local/share/nvim/site/plugin ~/.local/share/nvim/site/ftplugin ~/.local/share/nvim/site/doc
-	ln -snf $(CURDIR)/nvim/pack/start ~/.local/share/nvim/site/pack/all/start
-	ln -snf $(CURDIR)/nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
+	ln -srnf nvim/pack/start ~/.local/share/nvim/site/pack/all/start
+	ln -srnf nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
 	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/nvim/init.vim"
-	curl -Lso $(CURDIR)/nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/nvim/pack/start/colorschemes/colors/onehalfdark.vim"
+	curl -Lso nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/nvim/pack/start/colorschemes/colors/onehalfdark.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/gitsigns.lua "${linux_config}/tools/nvim/plugin/gitsigns.lua"
 	curl -Lso ~/.local/share/nvim/site/plugin/gpg.vim "${linux_config}/tools/nvim/plugin/gpg.vim"
@@ -50,5 +57,5 @@ nvim:
 	nvim --cmd ':helptags ALL | :q' --headless
 
 termux:
-	ln -sf $(CURDIR)/termux/colors.properties ~/.termux/colors.properties
+	ln -srf termux/colors.properties ~/.termux/colors.properties
 	termux-reload-settings

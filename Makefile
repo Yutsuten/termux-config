@@ -47,7 +47,6 @@ nvim:
 	curl -Lso nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/nvim/pack/start/colorschemes/colors/onehalfdark.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/gitsigns.lua "${linux_config}/tools/nvim/plugin/gitsigns.lua"
-	curl -Lso ~/.local/share/nvim/site/plugin/gpg.vim "${linux_config}/tools/nvim/plugin/gpg.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/statusline.vim "${linux_config}/tools/nvim/plugin/statusline.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/tabline.vim "${linux_config}/tools/nvim/plugin/tabline.vim"
 	curl -Lso ~/.local/share/nvim/site/plugin/vue.vim "${linux_config}/tools/nvim/plugin/vue.vim"

@@ -4,6 +4,7 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
         return
     end
     set -x NNN_PLUG 'l:-!less "$nnn"*'
+    set -x NNN_BMS 's:~/storage/sd-card/Sync'
     command nnn -AeouUT v $argv
 
     if test -e $HOME/.config/nnn/.lastd

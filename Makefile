@@ -58,4 +58,5 @@ nvim:
 
 termux:
 	ln -srf termux/colors.properties ~/.termux/colors.properties
+	curl -Lso ~/.termux/font.ttf 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

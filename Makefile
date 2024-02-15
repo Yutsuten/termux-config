@@ -11,6 +11,7 @@ fish:
 	rm -f ~/.config/fish/config.fish
 	rm -f ~/.config/fish/functions/*.fish
 	ln -srf fish/config.fish ~/.config/fish/config.fish
+	ln -srf fish/functions/m3u_extend.fish ~/.config/fish/functions/m3u_extend.fish
 	ln -srf fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
 	ln -srf fish/functions/sync.fish ~/.config/fish/functions/sync.fish
 	curl -Lso ~/.config/fish/functions/l1.fish "${linux_config}/tools/fish/functions/l1.fish"

@@ -13,14 +13,17 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
         return 1
     end
 
+    set bold (tput bold)
+    set reset (tput sgr0)
+
     set rootdir (realpath $argv[1])
     for playlist in $argv[1]/*.m3u
         set playlist_filename (basename $playlist)
         if test "$(head -n 1 $playlist)" = '#EXTM3U'
-            echo "Skip already converted $playlist_filename"
+            echo $bold"Skip already converted $playlist_filename"$reset
             continue
         end
-        echo "Converting $playlist_filename"
+        echo $bold"Converting $playlist_filename"$reset
         mv $playlist $playlist.old
         echo '#EXTM3U' > $playlist
         while read --line music_path
@@ -28,9 +31,12 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
             echo "$rootdir/$music_path" >> $playlist
         end < $playlist.old
         rm $playlist.old
+        set has_update 1
     end
-    echo 'Update media database'
-    termux-media-scan $argv[1]/*.m3u
-    echo 'Finish!'
+    if set -ql has_update
+        echo $bold'Update media database'$reset
+        termux-media-scan $argv[1]/*.m3u
+    end
+    echo $bold'Finish!'$reset
     return 0
 end

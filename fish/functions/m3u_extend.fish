@@ -16,8 +16,11 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
     set rootdir (realpath $argv[1])
     for playlist in $argv[1]/*.m3u
         set playlist_filename (basename $playlist)
+        if test "$(head -n 1 $playlist)" = '#EXTM3U'
+            echo "Skip already converted $playlist_filename"
+            continue
+        end
         echo "Converting $playlist_filename"
-
         mv $playlist $playlist.old
         echo '#EXTM3U' > $playlist
         while read --line music_path

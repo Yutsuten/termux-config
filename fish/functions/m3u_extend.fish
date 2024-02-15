@@ -24,6 +24,7 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
             echo "#EXTINF:0,$(basename $music_path)" >> $playlist
             echo "$rootdir/$music_path" >> $playlist
         end < $playlist.old
+        rm $playlist.old
     end
     echo 'Finish!'
     return 0

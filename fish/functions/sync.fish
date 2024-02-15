@@ -1,5 +1,5 @@
 function sync --description 'Sync files with desktop'
-    set root ~/storage/sd-card/Sync
+    set rootdir ~/storage/sd-card/Sync
     if test -z "$argv"
         echo 'Pass the lftp arguments to connect to the desktop.' >&2
         return 1
@@ -11,18 +11,20 @@ function sync --description 'Sync files with desktop'
         set cmd:fail-exit true;
         open $argv;
         echo $bold'(Phone > PC) Syncing backup'$reset;
-        mirror $options --reverse $root/Backup/Phone/ Documents/Backup/Phone/;
+        mirror $options --reverse $rootdir/Backup/Phone/ Documents/Backup/Phone/;
         echo $bold'(PC > Phone) Syncing backup'$reset;
-        mirror $options Documents/Backup/Computer/ $root/Backup/Computer/;
+        mirror $options Documents/Backup/Computer/ $rootdir/Backup/Computer/;
         echo $bold'(PC > Phone) Syncing music'$reset;
-        mirror $options Music/ $root/Music/;
+        mirror $options Music/ $rootdir/Music/;
         echo $bold'(PC > Phone) Syncing notes'$reset;
-        mirror $options Documents/Notes/ $root/Notes/;
+        mirror $options Documents/Notes/ $rootdir/Notes/;
         echo $bold'(PC > Phone) Syncing pictures'$reset;
-        mirror $options Pictures/ $root/Pictures/;
+        mirror $options Pictures/ $rootdir/Pictures/;
         echo $bold'(PC > Phone) Syncing videos'$reset;
-        mirror $options Videos/ $root/Videos/;
+        mirror $options Videos/ $rootdir/Videos/;
     "
+    echo $bold'Update media database'$reset
+    termux-media-scan -r $rootdir
     echo $bold'Finish!'$reset
     return 0
 end

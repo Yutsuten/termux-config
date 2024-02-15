@@ -26,6 +26,8 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
         end < $playlist.old
         rm $playlist.old
     end
+    echo 'Update media database'
+    termux-media-scan -r $argv[1]
     echo 'Finish!'
     return 0
 end

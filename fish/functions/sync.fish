@@ -1,11 +1,35 @@
 function sync --description 'Sync files with desktop'
-    set rootdir ~/storage/sd-card/Sync
-    if test -z "$argv"
-        echo 'Pass the lftp arguments to connect to the desktop.' >&2
+    argparse --ignore-unknown 'h/help' -- $argv
+    set exitcode $status
+
+    function help
+        echo 'Usage: sync [options] LFTP_OPTIONS' >&2
+        echo >&2
+        echo '  Synopsis:' >&2
+        echo '    Sync files with desktop.' >&2
+        echo >&2
+        echo '  Options:' >&2
+        echo '    -h, --help      Show list of command-line options' >&2
+        echo >&2
+        echo '  Positional arguments:' >&2
+        echo '    LFTP_OPTIONS: Options used to connect to the desktop, should connect to the home directory' >&2
+    end
+
+    if test $exitcode -ne 0 || set --query --local _flag_help
+        help
         return 1
     end
+
+    if test -z "$argv"
+        echo 'LFTP_OPTIONS is required.' >&2
+        help
+        return 1
+    end
+
     set bold (tput bold)
     set reset (tput sgr0)
+
+    set rootdir ~/storage/sd-card/Sync
     set options --no-symlinks --ignore-time --delete --no-perms --exclude-glob='.*/' --verbose
     lftp -c "
         set cmd:fail-exit true;

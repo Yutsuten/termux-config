@@ -1,15 +1,28 @@
 function m3u_extend --description 'Convert m3u to extended m3u (used for Symphony)'
     argparse --max-args 1 'h/help' -- $argv
-    or return
+    set exitcode $status
 
-    if set -ql _flag_help
-        echo 'Usage: m3u_extend [-h|--help] PLAYLIST_DIR' >&2
-        return 0
+    function help
+        echo 'Usage: m3u_extend [options] PLAYLIST_DIR' >&2
+        echo >&2
+        echo '  Synopsis:' >&2
+        echo '    Convert m3u to extended m3u.' >&2
+        echo >&2
+        echo '  Options:' >&2
+        echo '    -h, --help      Show list of command-line options' >&2
+        echo >&2
+        echo '  Positional arguments:' >&2
+        echo '    PLAYLIST_DIR: Directory where the m3u playlist files are located' >&2
+    end
+
+    if test $exitcode -ne 0 || set --query --local _flag_help
+        help
+        return 1
     end
 
     if not test -d $argv[1]
         echo 'PLAYLIST_DIR must be a valid directory' >&2
-        echo 'Usage: m3u_extend [-h|--help] PLAYLIST_DIR' >&2
+        help
         return 1
     end
 
@@ -33,7 +46,7 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
         rm $playlist.old
         set has_update 1
     end
-    if set -ql has_update
+    if set --query --local has_update
         echo $bold'Update media database'$reset
         termux-media-scan $argv[1]/*.m3u
     end

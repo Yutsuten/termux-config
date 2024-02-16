@@ -1,14 +1,21 @@
 function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     if test -n "$NNNLVL" -a "$NNNLVL" -ge 1
-        echo 'nnn is already running'
-        return
+        echo 'nnn is already running' >&2
+        return 1
     end
-    set -x NNN_PLUG 'l:-!less "$nnn"*'
-    set -x NNN_BMS 's:~/storage/sd-card/Sync'
+    set shortcuts
+    set --append shortcuts 'l:-!less "$nnn"*'
+    set --export NNN_PLUG (string join ';' $shortcuts)
+
+    set bookmarks
+    set --append bookmarks 's:~/storage/sd-card/Sync'
+    set --export NNN_BMS (string join ';' $bookmarks)
+
     command nnn -AeouUT v $argv
 
-    if test -e $HOME/.config/nnn/.lastd
-        source $HOME/.config/nnn/.lastd
-        rm $HOME/.config/nnn/.lastd
+    if test -e "$HOME/.config/nnn/.lastd"
+        source "$HOME/.config/nnn/.lastd"
+        rm "$HOME/.config/nnn/.lastd"
     end
+    return 0
 end

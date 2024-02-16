@@ -12,7 +12,7 @@ function sync --description 'Sync files with desktop'
         echo '    -h, --help      Show list of command-line options' >&2
         echo >&2
         echo '  Positional arguments:' >&2
-        echo '    LFTP_OPTIONS: Options used to connect to the desktop, should connect to the home directory' >&2
+        echo "    LFTP_OPTIONS: Options to connect to the desktop's home directory" >&2
     end
 
     if test $exitcode -ne 0 || set --query --local _flag_help

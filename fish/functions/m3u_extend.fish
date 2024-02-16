@@ -12,7 +12,7 @@ function m3u_extend --description 'Convert m3u to extended m3u (used for Symphon
         echo '    -h, --help      Show list of command-line options' >&2
         echo >&2
         echo '  Positional arguments:' >&2
-        echo '    PLAYLIST_DIR: Directory where the m3u playlist files are located' >&2
+        echo '    PLAYLIST_DIR: Directory where the m3u files are located' >&2
     end
 
     if test $exitcode -ne 0 || set --query --local _flag_help

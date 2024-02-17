@@ -13,4 +13,6 @@ if status is-interactive
     set -g fish_color_host_remote yellow
     set -g fish_color_user blue
     set -g fish_greeting
+
+    alias identify 'identify -precision 3'
 end

@@ -1,10 +1,10 @@
-.PHONY: fish git less nvim termux
+.PHONY: fish git less lftp nvim termux
 
 bold := $(shell tput bold)
 reset := $(shell tput sgr0)
 linux_config := https://raw.githubusercontent.com/Yutsuten/linux-config/main
 
-all: fish git less nvim termux
+all: fish git less lftp nvim termux
 
 fish:
 	@echo '${bold}>> Fish settings <<${reset}'
@@ -37,6 +37,10 @@ less:
 	curl -Lso less/lessopen.fish "${linux_config}/tools/less/lessopen.fish"
 	curl -Lso less/lessclose.fish "${linux_config}/tools/less/lessclose.fish"
 	chmod u+x less/*.fish
+
+lftp:
+	@echo '${bold}>> LFTP settings <<${reset}'
+	curl -Lso ~/.config/lftp/rc "${linux_config}/tools/lftp/lftp.rc"
 
 nvim:
 	@echo '${bold}>> Neovim settings <<${reset}'

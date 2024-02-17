@@ -15,4 +15,5 @@ if status is-interactive
     set -g fish_greeting
 
     alias identify 'identify -precision 3'
+    alias n 'nnn'
 end

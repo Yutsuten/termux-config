@@ -5,9 +5,12 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     end
     set shortcuts
     set --append shortcuts 'l:-!less "$nnn"*'
+    set --append shortcuts 's:-!termux-share "$nnn"*'
+    set --append shortcuts 'y:-!termux-clipboard-set "$nnn"*'
     set --export NNN_PLUG (string join ';' $shortcuts)
 
     set bookmarks
+    set --append bookmarks 'd:~/storage/internal/Documents'
     set --append bookmarks 's:~/storage/sd-card/Sync'
     set --export NNN_BMS (string join ';' $bookmarks)
 

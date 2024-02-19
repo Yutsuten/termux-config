@@ -1,5 +1,5 @@
 function m3u_extend --description 'Convert m3u to extended m3u (used for Symphony)'
-    argparse --max-args 1 'h/help' -- $argv
+    argparse --max-args 2 'h/help' -- $argv
     set exitcode $status
 
     function help

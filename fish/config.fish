@@ -16,4 +16,5 @@ if status is-interactive
 
     alias identify 'identify -precision 3'
     alias n 'nnn'
+    alias notes 'nvim -S ~/Desktop/Session.vim'
 end

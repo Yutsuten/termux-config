@@ -12,7 +12,7 @@ function sync --description 'Sync files with desktop'
         echo '    -h, --help      Show list of command-line options' >&2
         echo >&2
         echo '  Positional arguments:' >&2
-        echo "    LFTP_OPTIONS: Options to connect to the desktop's home directory" >&2
+        echo "    LFTP_OPTIONS    Options to connect to the desktop's home directory" >&2
     end
 
     if test $exitcode -ne 0 || set --query --local _flag_help
@@ -29,7 +29,7 @@ function sync --description 'Sync files with desktop'
     set bold (tput bold)
     set reset (tput sgr0)
 
-    set rootdir ~/storage/sd-card/Sync
+    set rootdir ~/Storage/sd-card/Sync
     set options --no-symlinks --ignore-time --delete --no-perms --exclude-glob='.*/' --verbose
     lftp -c "
         set cmd:fail-exit true;

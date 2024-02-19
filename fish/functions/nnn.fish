@@ -10,8 +10,8 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     set --export NNN_PLUG (string join ';' $shortcuts)
 
     set bookmarks
-    set --append bookmarks 'd:~/storage/internal/Documents'
-    set --append bookmarks 's:~/storage/sd-card/Sync'
+    set --append bookmarks 'd:~/Storage/internal/Documents'
+    set --append bookmarks 's:~/Storage/sd-card/Sync'
     set --export NNN_BMS (string join ';' $bookmarks)
 
     command nnn -AeouUT v $argv

@@ -30,7 +30,7 @@ function sync --description 'Sync files with desktop'
     set reset (tput sgr0)
 
     set rootdir ~/Storage/sd-card/Sync
-    set options --no-symlinks --ignore-time --delete --no-perms --verbose
+    set options --dereference --ignore-time --delete --no-perms --verbose
     lftp -c "
         set cmd:fail-exit true;
         open $argv;

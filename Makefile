@@ -14,6 +14,7 @@ fish:
 	ln -srf fish/functions/m3u_extend.fish ~/.config/fish/functions/m3u_extend.fish
 	ln -srf fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
 	ln -srf fish/functions/bkpsync.fish ~/.config/fish/functions/bkpsync.fish
+	curl -Lso ~/.config/fish/functions/gpgedit.fish "${linux_config}/tools/fish/functions/gpgedit.fish"
 	curl -Lso ~/.config/fish/functions/l1.fish "${linux_config}/tools/fish/functions/l1.fish"
 	curl -Lso ~/.config/fish/functions/ll.fish "${linux_config}/tools/fish/functions/ll.fish"
 	curl -Lso ~/.config/fish/functions/lo.fish "${linux_config}/tools/fish/functions/lo.fish"

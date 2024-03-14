@@ -1,9 +1,9 @@
-function sync --description 'Sync files with desktop'
+function bkpsync --description 'Sync files with desktop'
     argparse --ignore-unknown 'h/help' -- $argv
     set exitcode $status
 
     function help
-        echo 'Usage: sync [options] LFTP_OPTIONS' >&2
+        echo 'Usage: bkpsync [options] LFTP_OPTIONS' >&2
         echo >&2
         echo '  Synopsis:' >&2
         echo '    Sync files with desktop.' >&2

@@ -46,7 +46,7 @@ lftp:
 nvim:
 	@echo '${bold}>> Neovim settings <<${reset}'
 	rm -rf ~/.config/nvim ~/.local/share/nvim/site
-	mkdir -p ~/.config/nvim/after ~/.config/nvim/doc ~/.local/share/nvim/site/pack/all
+	mkdir -p ~/.config/nvim/after/plugin ~/.config/nvim/after/ftplugin ~/.config/nvim/doc ~/.local/share/nvim/site/pack/all
 	ln -srnf nvim/pack/start ~/.local/share/nvim/site/pack/all/start
 	ln -srnf nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
 	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/nvim/init.vim"

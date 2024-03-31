@@ -1,7 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/env fish
-echo
-echo
-echo "How would you like to share '$(basename $argv[1])'?"
+echo "How to share '$(basename $argv[1])'?"
 echo
 echo '  1. Save to ~/downloads (default)'
 echo '  2. Save to ~/storage/internal/Download'

@@ -10,10 +10,10 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     set --export NNN_PLUG (string join ';' $shortcuts)
 
     set bookmarks
-    set --append bookmarks 'b:~/Storage/sd-card/Documents/Backup'
-    set --append bookmarks 'i:~/Storage/internal/DCIM/Screenshots'
-    set --append bookmarks 'p:~/Storage/internal/DCIM/Camera'
-    set --append bookmarks 's:~/Storage/sd-card/Sync'
+    set --append bookmarks 'b:~/storage/sd-card/Documents/Backup'
+    set --append bookmarks 'i:~/storage/internal/DCIM/Screenshots'
+    set --append bookmarks 'p:~/storage/internal/DCIM/Camera'
+    set --append bookmarks 's:~/storage/sd-card/Sync'
     set --export NNN_BMS (string join ';' $bookmarks)
 
     command nnn -AeouUT v $argv

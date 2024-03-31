@@ -29,7 +29,9 @@ function bkpsync --description 'Sync files with desktop'
     set bold (tput bold)
     set reset (tput sgr0)
 
-    set rootdir ~/Storage/sd-card/Sync
+    cp -a ~/.local/environment $rootdir/Backup/Phone/environment
+
+    set rootdir ~/storage/sd-card/Sync
     set options --dereference --ignore-time --delete --no-perms --verbose
     lftp -c "
         set cmd:fail-exit true;

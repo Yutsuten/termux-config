@@ -7,7 +7,7 @@ if status is-interactive
     set -gx LESSCLOSE $HOME'/.config/termux/less/lessclose.fish %s %s'
     set -gx LESSOPEN $HOME'/.config/termux/less/lessopen.fish %s'
 
-    set -g CDPATH . $HOME $HOME/Projects
+    set -g CDPATH . $HOME $HOME/projects
     set -g fish_color_autosuggestion white
     set -g fish_color_host brmagenta
     set -g fish_color_host_remote yellow
@@ -16,5 +16,5 @@ if status is-interactive
 
     alias identify 'identify -precision 3'
     alias n 'nnn'
-    alias notes 'nvim -S ~/Desktop/Session.vim'
+    alias notes 'nvim -S ~/desktop/Session.vim'
 end

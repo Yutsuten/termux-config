@@ -45,25 +45,26 @@ lftp:
 
 nvim:
 	@echo '${bold}>> Neovim settings <<${reset}'
-	rm -f ~/.config/nvim/init.vim ~/.config/nvim/*
-	rm -rf ~/.local/share/nvim/site/*
-	mkdir -p ~/.config/nvim ~/.local/share/nvim/site/pack/all ~/.local/share/nvim/site/plugin ~/.local/share/nvim/site/ftplugin ~/.local/share/nvim/site/doc
+	rm -rf ~/.config/nvim ~/.local/share/nvim/site
+	mkdir -p ~/.config/nvim/after ~/.local/share/nvim/site/pack/all
 	ln -srnf nvim/pack/start ~/.local/share/nvim/site/pack/all/start
 	ln -srnf nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
 	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/nvim/init.vim"
 	curl -Lso nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/nvim/pack/start/colorschemes/colors/onehalfdark.vim"
-	curl -Lso ~/.local/share/nvim/site/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
-	curl -Lso ~/.local/share/nvim/site/plugin/gitsigns.lua "${linux_config}/tools/nvim/plugin/gitsigns.lua"
-	curl -Lso ~/.local/share/nvim/site/plugin/statusline.vim "${linux_config}/tools/nvim/plugin/statusline.vim"
-	curl -Lso ~/.local/share/nvim/site/plugin/tabline.vim "${linux_config}/tools/nvim/plugin/tabline.vim"
-	curl -Lso ~/.local/share/nvim/site/plugin/vue.vim "${linux_config}/tools/nvim/plugin/vue.vim"
-	curl -Lso ~/.local/share/nvim/site/ftplugin/fish.vim "${linux_config}/tools/nvim/ftplugin/fish.vim"
-	curl -Lso ~/.local/share/nvim/site/ftplugin/python.vim "${linux_config}/tools/nvim/ftplugin/python.vim"
-	curl -Lso ~/.local/share/nvim/site/doc/custom.txt "${linux_config}/tools/nvim/doc/custom.txt"
+	curl -Lso ~/.config/nvim/doc/custom.txt "${linux_config}/tools/nvim/doc/custom.txt"
+	curl -Lso ~/.config/nvim/after/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
+	curl -Lso ~/.config/nvim/after/plugin/gitsigns.lua "${linux_config}/tools/nvim/plugin/gitsigns.lua"
+	curl -Lso ~/.config/nvim/after/plugin/statusline.vim "${linux_config}/tools/nvim/plugin/statusline.vim"
+	curl -Lso ~/.config/nvim/after/plugin/tabline.vim "${linux_config}/tools/nvim/plugin/tabline.vim"
+	curl -Lso ~/.config/nvim/after/plugin/vue.vim "${linux_config}/tools/nvim/plugin/vue.vim"
+	curl -Lso ~/.config/nvim/after/ftplugin/fish.vim "${linux_config}/tools/nvim/ftplugin/fish.vim"
+	curl -Lso ~/.config/nvim/after/ftplugin/python.vim "${linux_config}/tools/nvim/ftplugin/python.vim"
 	nvim --cmd ':helptags ALL | :q' --headless
 
 termux:
 	@echo '${bold}>> Termux settings <<${reset}'
+	mkdir -p ~/bin
 	ln -srf termux/colors.properties ~/.termux/colors.properties
+	ln -srf termux/share.fish ~/bin/termux-file-editor
 	curl -Lso ~/.termux/font.ttf 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

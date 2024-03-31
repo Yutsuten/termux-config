@@ -1,9 +1,13 @@
 #!/data/data/com.termux/files/usr/bin/env fish
-echo "How would you like to share '$argv[1]'?"
+echo
+echo
+echo "How would you like to share '$(basename $argv[1])'?"
+echo
 echo '  1. Save to ~/downloads (default)'
 echo '  2. Save to ~/storage/internal/Download'
 echo '  3. Save to ~/storage/sd-card/Download'
 echo "  4. Save to $REMOTE/Downloads"
+echo
 read --prompt-str 'Answer: ' answer
 
 switch $answer

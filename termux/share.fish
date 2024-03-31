@@ -23,4 +23,3 @@ switch $answer
 end
 
 echo 'Defaulting to ~/downloads'
-return 0

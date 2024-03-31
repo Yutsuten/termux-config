@@ -6,6 +6,8 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     set shortcuts
     set --append shortcuts 'l:-!less "$nnn"*'
     set --append shortcuts 's:-!termux-share "$nnn"*'
+    set --append shortcuts 'u:upload'
+    set --append shortcuts 'Y:-!termux-clipboard-set "$(pwd)/$nnn"*'
     set --append shortcuts 'y:-!termux-clipboard-set "$nnn"*'
     set --export NNN_PLUG (string join ';' $shortcuts)
 

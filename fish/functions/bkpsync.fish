@@ -33,6 +33,21 @@ function bkpsync --description 'Sync files with desktop'
 
     set rootdir ~/storage/sd-card/Sync
     set options --dereference --ignore-time --delete --no-perms --verbose
+
+    function trim_old_backup
+        set keep_count $argv[1]
+        set cur 0
+        printf '%s\0' $argv[2..] | sort --zero-terminated --reverse | while read --null filename
+            set cur (math $cur + 1)
+            if test $cur -gt $keep_count
+                rm -fv $filename
+            end
+        end
+    end
+
+    trim_old_backup 30 $rootdir/Backup/Phone/Contacts/*.vcf
+    trim_old_backup 30 $rootdir/Backup/Phone/Calendar/*.ics
+
     lftp -c "
         set cmd:fail-exit true;
         open $argv;

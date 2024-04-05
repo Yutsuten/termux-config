@@ -29,10 +29,10 @@ function bkpsync --description 'Sync files with desktop'
     set bold (tput bold)
     set reset (tput sgr0)
 
-    cp -a ~/.local/environment $rootdir/Backup/Phone/environment
-
     set rootdir ~/storage/sd-card/Sync
     set options --dereference --ignore-time --delete --no-perms --verbose
+
+    cp -a ~/.local/environment $rootdir/Backup/Phone/environment
 
     function trim_old_backup
         set keep_count $argv[1]

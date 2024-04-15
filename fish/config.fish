@@ -14,7 +14,11 @@ if status is-interactive
     set -g fish_color_user blue
     set -g fish_greeting
 
-    alias identify 'identify -precision 3'
-    alias n 'nnn'
-    alias notes 'nvim -S ~/desktop/Session.vim'
+    abbr --add identify identify -precision 3
+    abbr --add l1 ls -N1 --sort=v --group-directories-first
+    abbr --add ll ls -Nlh --sort=v --group-directories-first
+    abbr --add lo ls -Noh --sort=v --group-directories-first
+    abbr --add ls ls -N --sort=v --group-directories-first
+    abbr --add n nnn
+    abbr --add notes nvim -S ~/desktop/Notes.vim
 end

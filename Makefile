@@ -15,10 +15,6 @@ fish:
 	ln -srf fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
 	ln -srf fish/functions/bkpsync.fish ~/.config/fish/functions/bkpsync.fish
 	curl -Lso ~/.config/fish/functions/gpgedit.fish "${linux_config}/tools/fish/functions/gpgedit.fish"
-	curl -Lso ~/.config/fish/functions/l1.fish "${linux_config}/tools/fish/functions/l1.fish"
-	curl -Lso ~/.config/fish/functions/ll.fish "${linux_config}/tools/fish/functions/ll.fish"
-	curl -Lso ~/.config/fish/functions/lo.fish "${linux_config}/tools/fish/functions/lo.fish"
-	curl -Lso ~/.config/fish/functions/ls.fish "${linux_config}/tools/fish/functions/ls.fish"
 	curl -Lso ~/.config/fish/functions/passgen.fish "${linux_config}/tools/fish/functions/passgen.fish"
 	curl -Ls "${linux_config}/tools/fish/functions/fish_prompt.fish" | sed 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' > ~/.config/fish/functions/fish_prompt.fish
 	curl -Ls "${linux_config}/tools/fish/functions/tts.fish" | sed 's/mpv --really-quiet --volume=100 \$$filename/termux-media-player play $$filename > \/dev\/null/g' > ~/.config/fish/functions/tts.fish

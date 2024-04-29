@@ -32,7 +32,7 @@ function bkpsync --description 'Sync files with desktop'
     set rootdir ~/storage/sd-card/Sync
     set options --dereference --ignore-time --delete --no-perms --verbose
 
-    cp -a ~/.local/environment $rootdir/Backup/Phone/environment
+    cp -a ~/.local/environment.fish $rootdir/Backup/Phone/environment.fish
 
     function trim_old_backup
         set keep_count $argv[1]

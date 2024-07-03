@@ -40,7 +40,7 @@ function bkpsync --description 'Sync files with desktop'
         printf '%s\0' $argv[2..] | sort --zero-terminated --reverse | while read --null filename
             set cur (math $cur + 1)
             if test $cur -gt $keep_count
-                rm -fv $filename
+                rm --force --verbose -- $filename
             end
         end
     end
@@ -53,12 +53,10 @@ function bkpsync --description 'Sync files with desktop'
         open $argv;
         echo $bold'(Phone > PC) Syncing backup'$reset;
         mirror $options --reverse $rootdir/Backup/Phone/ Documents/Backup/Phone/;
-        echo $bold'(PC > Phone) Syncing backup'$reset;
-        mirror $options Documents/Backup/Computer/ $rootdir/Backup/Computer/;
+        echo $bold'(PC > Phone) Syncing documents'$reset;
+        mirror $options Documents/ $rootdir/Documents/;
         echo $bold'(PC > Phone) Syncing music'$reset;
         mirror $options Music/ $rootdir/Music/;
-        echo $bold'(PC > Phone) Syncing notes'$reset;
-        mirror $options Documents/Notes/ $rootdir/Notes/;
         echo $bold'(PC > Phone) Syncing pictures'$reset;
         mirror $options Pictures/ $rootdir/Pictures/;
         echo $bold'(PC > Phone) Syncing videos'$reset;

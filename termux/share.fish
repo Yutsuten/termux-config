@@ -18,8 +18,7 @@ switch $answer
         mv $argv[1] ~/storage/sd-card/Download
         return
     case 4
-        lftp -c "open $REMOTE/Downloads; mirror --reverse --ignore-time --no-perms ~/downloads"
-        rm --force -- $argv[1]
+        lftp -c "open $REMOTE/Downloads; put -E '$argv[1]'"
         return
 end
 

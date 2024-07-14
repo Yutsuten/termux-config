@@ -37,7 +37,12 @@ while true
             read --line --prompt-str 'Press ENTER to continue...'
         case 7
             clear
-            pushd ~/projects/termux-config && git pull && make; popd
+            pushd ~/projects/termux-config && git pull
+            read --line --prompt-str 'Make? [y/N] ' answer
+            if string match --quiet --regex '^[Yy]$' $answer
+                make
+            end
+            popd
             read --line --prompt-str 'Press ENTER to continue...'
         case 8
             echo 'Exit'

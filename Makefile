@@ -66,6 +66,7 @@ termux:
 	@echo '${bold}>> Termux settings <<${reset}'
 	mkdir -p ~/bin
 	ln -srf termux/colors.properties ~/.termux/colors.properties
-	ln -srf termux/share.fish ~/bin/termux-file-editor
+	ln -srf termux/share ~/bin/termux-file-editor
+	ln -srf termux/todo ~/.termux/shell
 	curl -Lso ~/.termux/font.ttf 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

@@ -21,7 +21,7 @@ if status is-interactive
     abbr --add n        -- 'nnn'
 
     if test -z "$TODO"
-        set -g TODO 1
+        set -gx TODO 1
         exec ~/bin/todo
     end
 end

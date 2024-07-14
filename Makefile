@@ -11,9 +11,7 @@ fish:
 	rm -f ~/.config/fish/config.fish
 	rm -f ~/.config/fish/functions/*.fish
 	ln -srf fish/config.fish ~/.config/fish/config.fish
-	ln -srf fish/functions/m3u_extend.fish ~/.config/fish/functions/m3u_extend.fish
-	ln -srf fish/functions/nnn.fish ~/.config/fish/functions/nnn.fish
-	ln -srf fish/functions/bkpsync.fish ~/.config/fish/functions/bkpsync.fish
+	ln -srf fish/functions/*.fish ~/.config/fish/functions/
 	curl -Lso ~/.config/fish/functions/gpgedit.fish "${linux_config}/tools/fish/functions/gpgedit.fish"
 	curl -Lso ~/.config/fish/functions/idict.fish "${linux_config}/tools/fish/functions/idict.fish"
 	curl -Lso ~/.config/fish/functions/passgen.fish "${linux_config}/tools/fish/functions/passgen.fish"

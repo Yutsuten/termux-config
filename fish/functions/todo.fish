@@ -19,25 +19,29 @@ function todo --description 'What to do?'
                 clear
                 fish
             case 2
+                clear
                 nnn
             case 3
                 clear
                 pushd ~/storage/sd-card/Sync && lftp $REMOTE; popd
             case 4
+                clear
                 nvim ~/documents/Notes.txt
             case 5
                 clear
                 bkpsync $REMOTE
+                read --line --prompt-str 'Press ENTER to continue...'
             case 6
                 clear
                 bkpsync --upload $REMOTE
+                read --line --prompt-str 'Press ENTER to continue...'
             case 7
                 clear
                 pushd ~/projects/termux-config && git pull && make; popd
+                read --line --prompt-str 'Press ENTER to continue...'
             case 8
                 echo 'Exit'
                 break
         end
-        read --line --prompt-str 'Press ENTER to continue...'
     end
 end

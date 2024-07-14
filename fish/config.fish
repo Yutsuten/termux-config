@@ -19,4 +19,9 @@ if status is-interactive
     abbr --add lo       -- 'ls -Noh --sort=v --group-directories-first'
     abbr --add ls       -- 'ls -N --sort=v --group-directories-first'
     abbr --add n        -- 'nnn'
+
+    if test -z "$TODO"
+        set -g TODO 1
+        exec ~/bin/todo
+    end
 end

@@ -16,19 +16,24 @@ function todo --description 'What to do?'
         read --line --prompt-str 'Your choice: ' choice
         switch $choice
             case 1
+                clear
                 fish
             case 2
                 nnn
             case 3
+                clear
                 pushd ~/storage/sd-card/Sync && lftp $REMOTE; popd
             case 4
                 nvim ~/documents/Notes.txt
             case 5
+                clear
                 bkpsync $REMOTE
             case 6
+                clear
                 bkpsync --upload $REMOTE
             case 7
-                pushd ~/projects/termux-config && git pull; popd
+                clear
+                pushd ~/projects/termux-config && git pull && make; popd
             case 8
                 echo 'Exit'
                 break

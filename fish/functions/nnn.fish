@@ -4,11 +4,12 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
         return 1
     end
     set shortcuts
+    set --append shortcuts 'f:!lftp $REMOTE*'
     set --append shortcuts 'l:-!less "$nnn"*'
-    set --append shortcuts 's:-!termux-share "$nnn"*'
+    set --append shortcuts 's:!termux-share "$nnn"*'
     set --append shortcuts 'u:upload'
-    set --append shortcuts 'Y:-!termux-clipboard-set "$(pwd)/$nnn"*'
     set --append shortcuts 'y:-!termux-clipboard-set "$nnn"*'
+    set --append shortcuts 'Y:-!termux-clipboard-set "$PWD/$nnn"*'
     set --export NNN_PLUG (string join ';' $shortcuts)
 
     set bookmarks

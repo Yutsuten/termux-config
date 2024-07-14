@@ -6,9 +6,9 @@ echo '  2. Save to ~/storage/internal/Download'
 echo '  3. Save to ~/storage/sd-card/Download'
 echo "  4. Save to $REMOTE/Downloads"
 echo
-read --prompt-str 'Answer: ' answer
+read --prompt-str 'Your choice: ' choice
 
-switch $answer
+switch $choice
     case 1
         return 0
     case 2

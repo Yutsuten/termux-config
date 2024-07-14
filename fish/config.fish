@@ -19,4 +19,6 @@ if status is-interactive
     abbr --add lo       -- 'ls -Noh --sort=v --group-directories-first'
     abbr --add ls       -- 'ls -N --sort=v --group-directories-first'
     abbr --add n        -- 'nnn'
+
+    todo
 end

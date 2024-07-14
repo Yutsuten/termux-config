@@ -13,7 +13,7 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
 
     set bookmarks
     set --append bookmarks 'b:~/storage/sd-card/Documents/Backup'
-    set --append bookmarks 'i:~/storage/internal/DCIM/Screenshots'
+    set --append bookmarks 'i:~/storage/internal/Pictures/Screenshots'
     set --append bookmarks 'p:~/storage/internal/DCIM/Camera'
     set --append bookmarks 's:~/storage/sd-card/Sync'
     set --export NNN_BMS (string join ';' $bookmarks)

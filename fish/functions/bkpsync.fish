@@ -18,7 +18,7 @@ function bkpsync --description 'Sync files with desktop'
 
     if test $exitcode -ne 0 || set --query --local _flag_help
         help
-        return 1
+        return $exitcode
     end
 
     if test -z "$argv"

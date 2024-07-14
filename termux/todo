@@ -1,6 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/env fish
 
-cd ~
 while true
     clear
     echo 'What to do?'

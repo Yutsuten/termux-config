@@ -12,13 +12,17 @@ if status is-interactive
     set -g fish_color_user blue
     set -g fish_greeting
 
+    abbr --add calc     -- 'bc -l'
     abbr --add cpwd     -- 'termux-clipboard-set (string replace --regex "^$HOME" \~ $PWD)'
     abbr --add identify -- 'identify -precision 3'
     abbr --add l1       -- 'ls -N1 --sort=v --group-directories-first'
     abbr --add ll       -- 'ls -Nlh --sort=v --group-directories-first'
     abbr --add lo       -- 'ls -Noh --sort=v --group-directories-first'
-    abbr --add ls       -- 'ls -N --sort=v --group-directories-first'
     abbr --add n        -- 'nnn'
+
+    if set --query NVIM
+        abbr --add nvim -- 'nvim --server $NVIM --remote'
+    end
 
     if test -z "$TODO"
         set -gx TODO 1

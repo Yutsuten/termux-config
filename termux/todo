@@ -10,8 +10,9 @@ while true
     echo '  4. Open notes'
     echo '  5. Synchronize files'
     echo '  6. Upload files'
-    echo '  7. Update termux config'
-    echo '  8. Quit'
+    echo '  7. Download files'
+    echo '  8. Update termux config'
+    echo '  9. Quit'
     echo
     read --line --prompt-str 'Your choice: ' choice
     switch $choice
@@ -37,6 +38,15 @@ while true
             read --line --prompt-str 'Press ENTER to continue...'
         case 7
             clear
+            bkpsync --download $REMOTE
+            if test -f ~/downloads/clipboard
+                echo 'Update clipboard contents'
+                termux-clipboard-set < ~/downloads/clipboard
+                rm ~/downloads/clipboard
+            end
+            read --line --prompt-str 'Press ENTER to continue...'
+        case 8
+            clear
             pushd ~/projects/termux-config && git pull
             read --line --prompt-str 'Make? [y/N] ' answer
             if string match --quiet --regex '^[Yy]$' $answer
@@ -44,7 +54,7 @@ while true
             end
             popd
             read --line --prompt-str 'Press ENTER to continue...'
-        case 8
+        case 9
             echo 'Exit'
             break
     end

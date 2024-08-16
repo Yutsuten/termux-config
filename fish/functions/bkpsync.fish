@@ -1,5 +1,5 @@
 function bkpsync --description 'Sync files with desktop'
-    argparse --ignore-unknown 'h/help' 'u/upload' -- $argv
+    argparse --ignore-unknown 'h/help' 'u/upload' 'd/download' -- $argv
     set exitcode $status
 
     function help
@@ -44,6 +44,14 @@ function bkpsync --description 'Sync files with desktop'
             mput -E -O Downloads/ $mediaroot/DCIM/Camera/*;
             echo $bold'(Phone > PC) Uploading screenshots'$reset;
             mput -E -O Downloads/ $mediaroot/Pictures/Screenshots/*;
+        "
+    else if set --query --local _flag_download
+        lftp -c "
+            set cmd:fail-exit true;
+            open $argv;
+            set cmd:fail-exit false;
+            echo $bold'(PC > Phone) Downloading files'$reset;
+            mget -E -O ~/downloads/ Share/*;
         "
     else  # Backup Sync
         function trim_old_backup

@@ -1,6 +1,11 @@
 test -f ~/.local/environment.fish && source ~/.local/environment.fish
 
 if status is-interactive
+    if test -z "$TODO"
+        set -gx TODO 1
+        exec ~/bin/todo
+    end
+
     set -gx GPG_TTY (tty)
     set -gx LESSCLOSE $HOME'/.config/termux/less/lessclose.fish %s %s'
     set -gx LESSOPEN $HOME'/.config/termux/less/lessopen.fish %s'
@@ -24,8 +29,5 @@ if status is-interactive
         abbr --add nvim -- 'nvim --server $NVIM --remote'
     end
 
-    if test -z "$TODO"
-        set -gx TODO 1
-        exec ~/bin/todo
-    end
+    fzf --fish | source
 end

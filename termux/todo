@@ -6,12 +6,11 @@ while true
     echo
     echo '  1. Open fish'
     echo '  2. Open nnn'
-    echo '  3. Open lftp'
-    echo '  4. Synchronize files'
-    echo '  5. Upload files'
-    echo '  6. Download files'
-    echo '  7. Update termux config'
-    echo '  8. Quit'
+    echo '  3. Synchronize files'
+    echo '  4. Upload files'
+    echo '  5. Download files'
+    echo '  6. Update termux config'
+    echo '  7. Quit'
     echo
     read --line --prompt-str 'Your choice: ' choice
     switch $choice
@@ -23,16 +22,13 @@ while true
             nnn
         case 3
             clear
-            pushd ~/storage/sd-card/Sync && lftp $REMOTE; popd
-        case 4
-            clear
             bkpsync $REMOTE
             read --line --prompt-str 'Press ENTER to continue...'
-        case 5
+        case 4
             clear
             bkpsync --upload $REMOTE
             read --line --prompt-str 'Press ENTER to continue...'
-        case 6
+        case 5
             clear
             bkpsync --download $REMOTE
             if test -f ~/downloads/clipboard
@@ -41,7 +37,7 @@ while true
                 rm ~/downloads/clipboard
             end
             read --line --prompt-str 'Press ENTER to continue...'
-        case 7
+        case 6
             clear
             pushd ~/projects/termux-config && git pull
             read --line --prompt-str 'Make? [y/N] ' answer
@@ -50,7 +46,7 @@ while true
             end
             popd
             read --line --prompt-str 'Press ENTER to continue...'
-        case 8
+        case 7
             echo 'Exit'
             break
     end

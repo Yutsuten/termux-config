@@ -47,11 +47,11 @@ nnn:
 nvim:
 	@echo '${bold}>> Neovim settings <<${reset}'
 	rm -rf ~/.config/nvim ~/.local/share/nvim/site
-	mkdir -p ~/.config/nvim/after/plugin ~/.config/nvim/after/ftplugin ~/.config/nvim/doc ~/.local/share/nvim/site/pack/all
+	mkdir -p ~/.config/nvim/after/plugin ~/.config/nvim/after/ftplugin ~/.config/nvim/colors ~/.config/nvim/doc ~/.local/share/nvim/site/pack/all
 	ln -srnf nvim/pack/start ~/.local/share/nvim/site/pack/all/start
 	ln -srnf nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
 	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/nvim/init.vim"
-	curl -Lso nvim/pack/start/colorschemes/colors/onehalfdark.vim "${linux_config}/tools/nvim/pack/start/colorschemes/colors/onehalfdark.vim"
+	curl -Lso ~/.config/nvim/colors/onehalfdark.vim "${linux_config}/tools/nvim/colors/onehalfdark.vim"
 	curl -Lso ~/.config/nvim/doc/custom.txt "${linux_config}/tools/nvim/doc/custom.txt"
 	curl -Lso ~/.config/nvim/after/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
 	curl -Lso ~/.config/nvim/after/plugin/fzf.vim "${linux_config}/tools/nvim/plugin/fzf.vim"

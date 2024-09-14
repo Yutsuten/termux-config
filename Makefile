@@ -71,5 +71,7 @@ termux:
 	ln -srf termux/termux.properties ~/.termux/termux.properties
 	ln -srf termux/share ~/bin/termux-file-editor
 	ln -srf termux/todo ~/bin/todo
+	curl -Ls "${linux_config}/desktop/bin/fpass" | sed 's#/usr/bin/fish#/data/data/com.termux/files/usr/bin/env fish#' > ~/bin/fpass
+	chmod +x ~/bin/fpass
 	curl -Lso ~/.termux/font.ttf 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

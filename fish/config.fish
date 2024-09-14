@@ -1,5 +1,7 @@
 test -f ~/.local/environment.fish && source ~/.local/environment.fish
 
+fish_add_path $HOME/.local/bin
+
 if status is-interactive
     if test -z "$TODO"
         set -gx TODO 1

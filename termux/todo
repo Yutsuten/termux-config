@@ -25,9 +25,9 @@ while true
             clear
             read --line --prompt-str 'Show password? [y/N] ' answer
             if string match --quiet --regex '^[Yy]$' $answer
-                fpass --show
+                ~/bin/fpass --show
             else
-                fpass
+                ~/bin/fpass
             end
         case 4
             clear

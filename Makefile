@@ -1,10 +1,10 @@
-.PHONY: fish git less lftp nnn nvim termux
+.PHONY: fish git helix less lftp nnn nvim termux
 
 bold := $(shell tput bold)
 reset := $(shell tput sgr0)
 linux_config := https://raw.githubusercontent.com/Yutsuten/linux-config/main
 
-all: fish git less lftp nnn nvim termux
+all: fish git helix less lftp nnn nvim termux
 
 fish:
 	@echo '${bold}>> Fish settings <<${reset}'
@@ -26,6 +26,12 @@ git:
 	git config --global core.editor 'nvim'
 	git config --global commit.gpgsign true
 	curl -Lso ~/.config/gitignore "${linux_config}/tools/git/gitignore"
+
+helix:
+	echo '${bold}>> Helix settings <<${reset}'
+	rm -rf ~/.config/helix
+	mkdir -p ~/.config/helix
+	curl -Ls "${linux_config}/tools/helix/config.toml" | sed 's/onedark_modified/onedark/g' > ~/.config/helix/config.toml
 
 less:
 	@echo '${bold}>> Less settings <<${reset}'

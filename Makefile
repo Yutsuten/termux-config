@@ -1,10 +1,10 @@
-.PHONY: fish git helix less lftp nnn nvim termux
+.PHONY: fish git helix less lftp nnn termux
 
 bold := $(shell tput bold)
 reset := $(shell tput sgr0)
 linux_config := https://raw.githubusercontent.com/Yutsuten/linux-config/main
 
-all: fish git helix less lftp nnn nvim termux
+all: fish git helix less lftp nnn termux
 
 fish:
 	@echo '${bold}>> Fish settings <<${reset}'
@@ -23,13 +23,12 @@ git:
 	git config --global core.excludesfile ~/.config/gitignore
 	git config --global core.pager 'less -+XF -S'
 	git config --global pager.branch false
-	git config --global core.editor 'nvim'
+	git config --global core.editor 'hx'
 	git config --global commit.gpgsign true
 	curl -Lso ~/.config/gitignore "${linux_config}/tools/git/gitignore"
 
 helix:
 	echo '${bold}>> Helix settings <<${reset}'
-	rm -rf ~/.config/helix
 	mkdir -p ~/.config/helix
 	curl -Ls "${linux_config}/tools/helix/config.toml" | sed 's/onedark_modified/onedark/g' > ~/.config/helix/config.toml
 
@@ -49,26 +48,6 @@ nnn:
 	mkdir -p ~/.config/nnn
 	rm -rf ~/.config/nnn/plugins
 	ln -srf nnn ~/.config/nnn/plugins
-
-nvim:
-	@echo '${bold}>> Neovim settings <<${reset}'
-	rm -rf ~/.config/nvim ~/.local/share/nvim/site
-	mkdir -p ~/.config/nvim/after/plugin ~/.config/nvim/after/ftplugin ~/.config/nvim/colors ~/.config/nvim/doc ~/.local/share/nvim/site/pack/all
-	ln -srnf nvim/pack/start ~/.local/share/nvim/site/pack/all/start
-	ln -srnf nvim/pack/opt ~/.local/share/nvim/site/pack/all/opt
-	curl -Lso ~/.config/nvim/init.vim "${linux_config}/tools/nvim/init.vim"
-	curl -Lso ~/.config/nvim/colors/onehalfdark.vim "${linux_config}/tools/nvim/colors/onehalfdark.vim"
-	curl -Lso ~/.config/nvim/doc/custom.txt "${linux_config}/tools/nvim/doc/custom.txt"
-	curl -Lso ~/.config/nvim/after/plugin/colorscheme.vim "${linux_config}/tools/nvim/plugin/colorscheme.vim"
-	curl -Lso ~/.config/nvim/after/plugin/fzf.vim "${linux_config}/tools/nvim/plugin/fzf.vim"
-	curl -Lso ~/.config/nvim/after/plugin/gitsigns.lua "${linux_config}/tools/nvim/plugin/gitsigns.lua"
-	curl -Lso ~/.config/nvim/after/plugin/nnn.vim "${linux_config}/tools/nvim/plugin/nnn.vim"
-	curl -Lso ~/.config/nvim/after/plugin/statusline.vim "${linux_config}/tools/nvim/plugin/statusline.vim"
-	curl -Lso ~/.config/nvim/after/plugin/tabline.vim "${linux_config}/tools/nvim/plugin/tabline.vim"
-	curl -Lso ~/.config/nvim/after/plugin/vue.vim "${linux_config}/tools/nvim/plugin/vue.vim"
-	curl -Lso ~/.config/nvim/after/ftplugin/fish.vim "${linux_config}/tools/nvim/ftplugin/fish.vim"
-	curl -Lso ~/.config/nvim/after/ftplugin/python.vim "${linux_config}/tools/nvim/ftplugin/python.vim"
-	nvim --cmd ':helptags ALL | :q' --headless
 
 termux:
 	@echo '${bold}>> Termux settings <<${reset}'

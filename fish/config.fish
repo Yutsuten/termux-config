@@ -27,9 +27,5 @@ if status is-interactive
     abbr --add lo -- 'ls -Noh --sort=v --group-directories-first'
     abbr --add n -- nnn
 
-    if set --query NVIM
-        abbr --add nvim -- 'nvim --server $NVIM --remote'
-    end
-
     fzf --fish | source
 end

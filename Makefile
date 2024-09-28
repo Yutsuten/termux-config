@@ -56,7 +56,8 @@ termux:
 	ln -srf termux/share ~/bin/termux-file-editor
 	ln -srf termux/todo ~/bin/todo
 	curl -Ls "${linux_config}/desktop/bin/fpass" | sed 's#/usr/bin/fish#/data/data/com.termux/files/usr/bin/env fish#' > ~/.local/bin/fpass
-	curl -Lso ~/.local/bin/edit "${linux_config}/desktop/bin/edit"
+	curl -Ls "${linux_config}/desktop/bin/edit" | sed 's#/usr/bin/fish#/data/data/com.termux/files/usr/bin/env fish#' > ~/.local/bin/edit
 	chmod +x ~/.local/bin/fpass
+	chmod +x ~/.local/bin/edit
 	curl -Lso ~/.termux/font.ttf 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

@@ -12,7 +12,6 @@ fish:
 	rm -f ~/.config/fish/functions/*.fish
 	ln -srf fish/config.fish ~/.config/fish/config.fish
 	ln -srf fish/functions/*.fish ~/.config/fish/functions/
-	curl -Lso ~/.config/fish/functions/gpgedit.fish "${linux_config}/tools/fish/functions/gpgedit.fish"
 	curl -Lso ~/.config/fish/functions/idict.fish "${linux_config}/tools/fish/functions/idict.fish"
 	curl -Lso ~/.config/fish/functions/passgen.fish "${linux_config}/tools/fish/functions/passgen.fish"
 	curl -Ls "${linux_config}/tools/fish/functions/fish_prompt.fish" | sed 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' > ~/.config/fish/functions/fish_prompt.fish
@@ -57,6 +56,7 @@ termux:
 	ln -srf termux/share ~/bin/termux-file-editor
 	ln -srf termux/todo ~/bin/todo
 	curl -Ls "${linux_config}/desktop/bin/fpass" | sed 's#/usr/bin/fish#/data/data/com.termux/files/usr/bin/env fish#' > ~/.local/bin/fpass
+	curl -Lso ~/.local/bin/edit "${linux_config}/desktop/bin/edit"
 	chmod +x ~/.local/bin/fpass
 	curl -Lso ~/.termux/font.ttf 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

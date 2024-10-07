@@ -23,12 +23,7 @@ while true
             nnn
         case 3
             clear
-            read --line --prompt-str 'Show password? [y/N] ' answer
-            if string match --quiet --regex '^[Yy]$' $answer
-                fpass --show
-            else
-                fpass
-            end
+            fpass
         case 4
             clear
             bkpsync $REMOTE

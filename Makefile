@@ -29,7 +29,7 @@ git:
 helix:
 	echo '${bold}>> Helix settings <<${reset}'
 	mkdir -p ~/.config/helix
-	curl -Ls "${linux_config}/tools/helix/config.toml" | sed 's/onedark_modified/onedark/g' > ~/.config/helix/config.toml
+	curl -Ls "${linux_config}/tools/helix/config.toml" | sed -e 's/onedark_modified/onedark/g' -e 's/file-name/file-base-name/g' > ~/.config/helix/config.toml
 
 less:
 	@echo '${bold}>> Less settings <<${reset}'

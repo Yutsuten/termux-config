@@ -4,6 +4,7 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
         return 1
     end
     set shortcuts
+    set --append shortcuts 'b:background'
     set --append shortcuts 'c:-!termux-clipboard-set < "$nnn"*'
     set --append shortcuts 'C:!termux-clipboard-get > clipboard*'
     set --append shortcuts 'l:!lftp $REMOTE*'

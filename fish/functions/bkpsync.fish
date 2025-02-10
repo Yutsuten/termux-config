@@ -1,5 +1,5 @@
 function bkpsync --description 'Sync files with desktop'
-    argparse --ignore-unknown 'h/help' 'u/upload' 'd/download' -- $argv
+    argparse --ignore-unknown h/help u/upload d/download -- $argv
     set exitcode $status
 
     function help
@@ -53,7 +53,7 @@ function bkpsync --description 'Sync files with desktop'
             echo $bold'(PC > Phone) Downloading files'$reset;
             mget -E -O ~/downloads/ Share/*;
         "
-    else  # Backup Sync
+    else # Backup Sync
         function trim_old_backup
             set keep_count $argv[1]
             set cur 0
@@ -83,6 +83,8 @@ function bkpsync --description 'Sync files with desktop'
             mirror $options Pictures/ $syncroot/Pictures/;
             echo $bold'(PC > Phone) Syncing videos'$reset;
             mirror $options Videos/ $syncroot/Videos/;
+            echo $bold'(PC > Phone) Syncing encrypted files'$reset;
+            mirror $options Encrypted/ $syncroot/Encrypted/;
         "
         echo $bold'Update media database'$reset
         termux-media-scan -r $syncroot

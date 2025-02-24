@@ -1,10 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/env fish
 
-set -gx GUM_CHOOSE_HEADER_FOREGROUND 6
-set -gx GUM_CHOOSE_CURSOR_FOREGROUND 4
-set -gx GUM_CONFIRM_PROMPT_FOREGROUND 6
-set -gx GUM_CONFIRM_SELECTED_BACKGROUND 4
-
 while set choice ( \
         gum choose --header 'Termux Menu' --header.align center --header.bold --header.width (math (tput cols) - 2) --header.border rounded --cursor ' → ' --cursor.bold \
             'Open fish' 'Open nnn' 'Open password manager' 'Synchronize files' 'Upload files' 'Download files' 'Update termux config' Quit \

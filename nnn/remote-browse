@@ -1,0 +1,54 @@
+#!/usr/bin/env fish
+
+set GUM_CHOOSE_ARGS --cursor ' → ' --cursor.bold --height 23
+set cwd /
+set show_hidden no
+
+function browse_directory
+    echo '✦ Get files'
+    echo '✦ Toggle hidden'
+    if test $cwd != /
+        echo '../'
+    end
+    set sed_options 's#^.*/$#\0#p'
+    if test $show_hidden = no
+        set sed_options 's#^[^\.].*/$#\0#p'
+    end
+    lftp -c "open '$REMOTE$cwd'; cls -DB1" | sed -nE $sed_options
+end
+
+function fetch_available_files
+    set sed_options 's#^.*[^/]$#\0#p'
+    if test $show_hidden = no
+        set sed_options 's#^[^\.].*[^/]$#\0#p'
+    end
+    lftp -c "open '$REMOTE$cwd'; cls -DB1" | sed -nE $sed_options
+end
+
+echo "Local  $(prompt_pwd --dir-length=0)"
+while set selection (gum choose $GUM_CHOOSE_ARGS --header "Remote $cwd" (browse_directory))
+    if test $selection = '✦ Toggle hidden'
+        if test $show_hidden = no
+            set show_hidden yes
+        else
+            set show_hidden no
+        end
+    else if test $selection = '✦ Get files'
+        set available_files (fetch_available_files)
+        if test (count $available_files) -ne 0
+            while set selected_files (gum choose $GUM_CHOOSE_ARGS --header 'Select files' --no-limit $available_files)
+                if test -n "$selected_files"
+                    echo "Get $selected_files"
+                    lftp -c "open '$REMOTE$cwd'; get '$(string join "' '" $selected_files)'"
+                    break
+                else
+                    echo 'No files selected!'
+                end
+            end
+        else
+            echo "✘ No files in: $cwd"
+        end
+    else
+        set cwd (path normalize $cwd/$selection)
+    end
+end

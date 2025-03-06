@@ -14,7 +14,7 @@ function browse_directory
     if test $show_hidden = no
         set sed_options 's#^[^\.].*/$#\0#p'
     end
-    lftp -c "open '$REMOTE$cwd'; cls -DB1" | sed -nE $sed_options
+    lftp -c "open '$REMOTE$cwd'; cls -DB1" | sort | sed -nE $sed_options
 end
 
 function fetch_available_files
@@ -22,7 +22,7 @@ function fetch_available_files
     if test $show_hidden = no
         set sed_options 's#^[^\.].*[^/]$#\0#p'
     end
-    lftp -c "open '$REMOTE$cwd'; cls -DB1" | sed -nE $sed_options
+    lftp -c "open '$REMOTE$cwd'; cls -DB1" | sort | sed -nE $sed_options
 end
 
 echo "Local  $(prompt_pwd --dir-length=0)"

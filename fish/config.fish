@@ -6,10 +6,14 @@ set -gx LESSOPEN $HOME'/.config/termux/less/lessopen.fish %s'
 set -gx EDITOR edit
 set -gx VISUAL edit
 
-set -gx GUM_CHOOSE_HEADER_FOREGROUND 6
+set -gx GUM_CHOOSE_CURSOR ' → '
+set -gx GUM_CHOOSE_CURSOR_BOLD 1
 set -gx GUM_CHOOSE_CURSOR_FOREGROUND 4
+set -gx GUM_CHOOSE_HEADER_FOREGROUND 6
+set -gx GUM_CHOOSE_SHOW_HELP 0
 set -gx GUM_CONFIRM_PROMPT_FOREGROUND 6
 set -gx GUM_CONFIRM_SELECTED_BACKGROUND 4
+set -gx GUM_CONFIRM_SHOW_HELP 0
 
 fish_add_path $HOME/.local/bin
 

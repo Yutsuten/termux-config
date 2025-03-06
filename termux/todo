@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/env fish
 
 while set choice ( \
-        gum choose --header 'Termux Menu' --header.align center --header.bold --header.width (math (tput cols) - 2) --header.border rounded --cursor ' → ' --cursor.bold \
+        gum choose --header 'Termux Menu' --header.align center --header.bold --header.width (math (tput cols) - 2) --header.border rounded \
             'Open fish' 'Open nnn' 'Open password manager' 'Synchronize files' 'Upload files' 'Download files' 'Update termux config' Quit \
     )
     switch $choice
@@ -16,15 +16,15 @@ while set choice ( \
             fpass
         case 'Synchronize files'
             clear
-            bkpsync $REMOTE
+            time bkpsync $REMOTE
             read --line --prompt-str 'Press ENTER to continue...'
         case 'Upload files'
             clear
-            bkpsync --upload $REMOTE
+            time bkpsync --upload $REMOTE
             read --line --prompt-str 'Press ENTER to continue...'
         case 'Download files'
             clear
-            bkpsync --download $REMOTE
+            time bkpsync --download $REMOTE
             if test -f ~/downloads/clipboard
                 echo 'Update clipboard contents'
                 termux-clipboard-set <~/downloads/clipboard

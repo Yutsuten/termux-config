@@ -18,9 +18,9 @@ set -gx GUM_CONFIRM_SHOW_HELP 0
 fish_add_path $HOME/.local/bin
 
 if status is-interactive
-    if test -z "$TODO"
-        set -gx TODO 1
-        exec ~/bin/todo
+    if test -z "$MENU_OPEN"
+        set -gx MENU_OPEN 1
+        exec ~/bin/menu
     end
 
     set -g CDPATH . $HOME $HOME/projects

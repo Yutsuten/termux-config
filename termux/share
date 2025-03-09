@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/env fish
 
 set options 'Save to ~/downloads' 'Save to ~/storage/internal/Download' 'Save to ~/storage/sd-card/Download' "Save to $REMOTE/Downloads"
-switch (gum choose --header "How to share '$(basename $argv[1])'?" $options || return)
+switch (gum choose --header "How to share '$(basename $argv[1])'?" --header.margin '1 0' $options || return)
     case $options[1]
         return 0
     case $options[2]

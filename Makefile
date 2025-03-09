@@ -53,7 +53,8 @@ termux:
 	ln -srf termux/colors.properties ~/.termux/colors.properties
 	ln -srf termux/termux.properties ~/.termux/termux.properties
 	ln -srf termux/share ~/bin/termux-file-editor
-	ln -srf termux/todo ~/bin/todo
+	ln -srf termux/menu ~/bin/menu
+	find ~/bin -xtype l -delete
 	curl -Ls "${linux_config}/desktop/bin/fpass" | sed '1c\#!/data/data/com.termux/files/usr/bin/env fish' > ~/.local/bin/fpass
 	curl -Ls "${linux_config}/desktop/bin/edit" | sed '1c\#!/data/data/com.termux/files/usr/bin/env fish' > ~/.local/bin/edit
 	chmod +x ~/.local/bin/fpass

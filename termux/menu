@@ -33,8 +33,9 @@ while set choice ( \
             read --line --prompt-str 'Press ENTER to continue...'
         case 'Update packages'
             pkg update
-            pkg upgrade
+            pkg upgrade -y
             pkg autoclean
+            read --line --prompt-str 'Press ENTER to continue...'
         case 'Update termux config'
             clear
             pushd ~/projects/termux-config && git pull

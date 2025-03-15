@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 if not test -f $nnn
     echo 'Not a file'
     return 1

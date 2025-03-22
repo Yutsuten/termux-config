@@ -17,7 +17,7 @@ fish:
 	cp -p ${linux_config}/tools/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 	sed -i -e 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' -e 's/ --dir-length=0//g' ~/.config/fish/functions/fish_prompt.fish
 	cp -p ${linux_config}/tools/fish/functions/tts.fish ~/.config/fish/functions/tts.fish
-	sed -i 's/mpv .*--volume=100 \$$filename/termux-media-player play $$filename > \/dev\/null/g' ~/.config/fish/functions/tts.fish
+	sed -i 's/mpv .*/termux-media-player play $$output_file > \/dev\/null/g' ~/.config/fish/functions/tts.fish
 
 git:
 	echo '${bold}>> Git settings <<${reset}'

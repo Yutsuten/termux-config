@@ -32,7 +32,6 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     set --append dir_order "t:$HOME/downloads"
     set --export NNN_ORDER (string join ';' $dir_order)
 
-    set --export NNN_TRASH 1
     set --export NNN_OPTS AeNouU
 
     command nnn $argv

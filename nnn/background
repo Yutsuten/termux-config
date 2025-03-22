@@ -1,9 +1,0 @@
-#!/usr/bin/env fish
-if not test -f $nnn
-    echo 'Not a file'
-    return 1
-end
-while not string match --regex --quiet '^[1-9]?[0-9]$' $degree
-    read --prompt-str 'Darken degree [1-99]%: ' degree || return
-end
-magick $nnn -fill black -colorize $degree% ~/storage/sd-card/Pictures/$degree-$nnn

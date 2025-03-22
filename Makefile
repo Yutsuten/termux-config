@@ -48,9 +48,16 @@ lftp:
 
 nnn:
 	@echo '${bold}>> Nnn plugins <<${reset}'
-	mkdir -p ~/.config/nnn
 	rm -rf ~/.config/nnn/plugins
-	ln -srf nnn ~/.config/nnn/plugins
+	mkdir -p ~/.config/nnn/plugins
+	ln -srf nnn/* ~/.config/nnn/plugins/
+	ln -srf ${linux_config}/tools/nnn/.utils ~/.config/nnn/plugins/.utils
+	ln -srf ${linux_config}/tools/nnn/anki ~/.config/nnn/plugins/anki
+	ln -srf ${linux_config}/tools/nnn/archive ~/.config/nnn/plugins/archive
+	ln -srf ${linux_config}/tools/nnn/find ~/.config/nnn/plugins/find
+	ln -srf ${linux_config}/tools/nnn/gpg ~/.config/nnn/plugins/gpg
+	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.config/nnn/plugins/*
+	find ~/.config/nnn/plugins -xtype l -delete
 
 termux:
 	@echo '${bold}>> Termux settings <<${reset}'

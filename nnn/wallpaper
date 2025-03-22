@@ -1,0 +1,22 @@
+#!/data/data/com.termux/files/usr/bin/env fish
+# ----------------------------------------------------------- #
+# Darken an image to improve contrast when used as wallpaper. #
+# ----------------------------------------------------------- #
+
+source (status dirname)/.utils
+
+nnn_get_selection WALLPAPER darken $argv[1] || return
+
+set degree
+while not string match --regex --quiet '^[1-9]?[0-9]$' $degree
+    read --prompt-str 'Darken degree [1-99]%: ' degree || return
+end
+
+for selection in $NNN_SELECTION
+    if not test -f $selection
+        echo "Not a file, skip: $selection"
+        continue
+    end
+    echo "[WALLPAPER] Processing: $selection"
+    magick $selection -fill black -colorize $degree% ~/storage/sd-card/Pictures/$degree-$selection
+end

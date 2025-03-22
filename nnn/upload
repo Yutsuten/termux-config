@@ -1,18 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/env fish
+# -------------------------------- #
+# Upload selected files to REMOTE. #
+# -------------------------------- #
 
 if test -z "$REMOTE"
-    echo '$REMOTE environment variable must be set.' >&2
+    echo 'REMOTE environment variable must be set.' >&2
     return 1
 end
 
-set target_files
-if test -s ~/.config/nnn/.selection
-    set lftp_command "open $REMOTE/Downloads; put -E"
-    while read --null target
-        set lftp_command "$lftp_command '$target'"
-    end < ~/.config/nnn/.selection
-    lftp -c $lftp_command
-else
-    set target_files $nnn
-    lftp -c "open $REMOTE/Downloads; put -E '$nnn'"
-end
+source (status dirname)/.utils
+
+nnn_get_selection UPLOAD upload $argv[1] || return
+
+set put_options \'$NNN_SELECTION\'
+lftp -c "open $REMOTE/Downloads; put -E $put_options"

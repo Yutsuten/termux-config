@@ -1,6 +1,9 @@
-#!/usr/bin/env fish
+#!/data/data/com.termux/files/usr/bin/env fish
+# --------------------------------------------- #
+# Browse REMOTE interactively using gum choose. #
+# --------------------------------------------- #
 
-set GUM_CHOOSE_ARGS --cursor ' → ' --cursor.bold --height 23
+set GUM_CHOOSE_ARGS --height 23
 set cwd /
 set show_hidden no
 

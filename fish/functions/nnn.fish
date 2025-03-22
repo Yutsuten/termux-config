@@ -5,8 +5,10 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     end
 
     set shortcuts
+    set --append shortcuts 'a:anki'
     set --append shortcuts 'c:-!termux-clipboard-set < "$nnn"*'
     set --append shortcuts 'C:!termux-clipboard-get > clipboard*'
+    set --append shortcuts 'g:gpg'
     set --append shortcuts 'l:!lftp $REMOTE*'
     set --append shortcuts 'j:jumpdir'
     set --append shortcuts 'r:remote-browse'
@@ -15,6 +17,8 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     set --append shortcuts 'w:wallpaper'
     set --append shortcuts 'y:-!termux-clipboard-set -- "$nnn"*'
     set --append shortcuts 'Y:-!termux-clipboard-set -- "$PWD/$nnn"*'
+    set --append shortcuts 'z:archive'
+    set --append shortcuts '/:find'
     set --export NNN_PLUG (string join ';' $shortcuts)
 
     set bookmarks

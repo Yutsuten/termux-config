@@ -36,10 +36,10 @@ helix:
 
 less:
 	@echo '${bold}>> Less settings <<${reset}'
-	mkdir -p less
-	wget -nv -NP less "${linux_config}/tools/less/lessopen.fish"
-	wget -nv -NP less "${linux_config}/tools/less/lessclose.fish"
-	chmod u+x less/*.fish
+	mkdir -p ~/.config/less
+	wget -nv -NP ~/.config/less "${linux_config}/tools/less/lessopen.fish"
+	wget -nv -NP ~/.config/less "${linux_config}/tools/less/lessclose.fish"
+	chmod u+x ~/.config/less/*.fish
 
 lftp:
 	@echo '${bold}>> LFTP settings <<${reset}'

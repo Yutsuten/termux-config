@@ -38,10 +38,12 @@ while set choice ( \
             read --line --prompt-str 'Press ENTER to continue...'
         case 'Update termux config'
             clear
+            echo 'Update linux-config'
             pushd ~/projects/linux-config && git pull
             popd
+            echo 'Update termux-config'
             pushd ~/projects/termux-config && git pull
-            gum confirm 'Make?' && make
+            gum confirm 'Make?' --show-output && make
             popd
             read --line --prompt-str 'Press ENTER to continue...'
         case Quit

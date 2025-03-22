@@ -8,8 +8,7 @@ Mostly based on [linux-config](https://github.com/Yutsuten/linux-config).
 Clone the repository:
 
 ```shell
-git clone git@github.com:Yutsuten/termux-config.git ~/.config/termux
-git submodule update --init
+git clone git@github.com:Yutsuten/termux-config.git
 ```
 
 Apply the configuration:

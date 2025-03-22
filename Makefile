@@ -66,5 +66,5 @@ termux:
 	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.local/bin/edit
 	chmod u+x ~/.local/bin/*
 	find ~/.local/bin -xtype l -delete
-	wget -nv -NP ~/.termux 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
+	test -s ~/.termux/Source-Code-Pro.ttf || wget -nv -NP ~/.termux 'https://raw.githubusercontent.com/termux/termux-styling/master/app/src/main/assets/fonts/Source-Code-Pro.ttf'
 	termux-reload-settings

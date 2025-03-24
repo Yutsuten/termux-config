@@ -17,11 +17,11 @@ while set choice ( \
         case 'Synchronize files'
             clear
             time bkpsync $REMOTE
-            read --line --prompt-str 'Press ENTER to continue...'
+            read --prompt-str 'Press ENTER to continue...'
         case 'Upload files'
             clear
             time bkpsync --upload $REMOTE
-            read --line --prompt-str 'Press ENTER to continue...'
+            read --prompt-str 'Press ENTER to continue...'
         case 'Download files'
             clear
             time bkpsync --download $REMOTE
@@ -30,22 +30,21 @@ while set choice ( \
                 termux-clipboard-set <~/downloads/clipboard
                 rm ~/downloads/clipboard
             end
-            read --line --prompt-str 'Press ENTER to continue...'
+            read --prompt-str 'Press ENTER to continue...'
         case 'Update packages'
             pkg update
             pkg upgrade -y
             pkg autoclean
-            read --line --prompt-str 'Press ENTER to continue...'
+            read --prompt-str 'Press ENTER to continue...'
         case 'Update termux config'
             clear
             echo 'Update linux-config'
             pushd ~/projects/linux-config && git pull
             popd
             echo 'Update termux-config'
-            pushd ~/projects/termux-config && git pull
-            gum confirm 'Make?' --show-output && make
+            pushd ~/projects/termux-config && git pull && make
             popd
-            read --line --prompt-str 'Press ENTER to continue...'
+            read --prompt-str 'Press ENTER to continue...'
         case Quit
             break
     end

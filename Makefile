@@ -16,7 +16,6 @@ fish:
 	ln -srf ${linux_config}/tools/fish/functions/passgen.fish ~/.config/fish/functions/passgen.fish
 	cp -p ${linux_config}/tools/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 	sed -i -e 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' -e 's/ --dir-length=0//g' ~/.config/fish/functions/fish_prompt.fish
-	sed -i 's/mpv .*/termux-media-player play $$output_file > \/dev\/null/g' ~/.config/fish/functions/tts.fish
 
 git:
 	echo '${bold}>> Git settings <<${reset}'
@@ -57,6 +56,7 @@ nnn:
 	ln -srf ${linux_config}/tools/nnn/gpg ~/.config/nnn/plugins/gpg
 	ln -srf ${linux_config}/tools/nnn/tts ~/.config/nnn/plugins/tts
 	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.config/nnn/plugins/*
+	sed -i 's/mpv .*/termux-media-player play $$output_file > \/dev\/null/g' ~/.config/nnn/plugins/tts
 	find ~/.config/nnn/plugins -xtype l -delete
 
 termux:

@@ -4,6 +4,12 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
         return 1
     end
 
+    set extra_plugins ~/.local/share/nnn/*
+    if test (count $extra_plugins) -ge 1
+        ln -srf $extra_plugins ~/.config/nnn/plugins
+    end
+    find ~/.config/nnn/plugins -xtype l -delete
+
     set shortcuts
     set --append shortcuts 'a:anki'
     set --append shortcuts 'c:-!termux-clipboard-set < "$nnn"*'

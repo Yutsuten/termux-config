@@ -47,10 +47,9 @@ lftp:
 nnn:
 	@echo '${bold}>> Nnn plugins <<${reset}'
 	rm -rf ~/.config/nnn/plugins
-	mkdir -p ~/.config/nnn/plugins
+	mkdir -p ~/.config/nnn/plugins ~/.local/share/nnn
 	ln -srf nnn/* ~/.config/nnn/plugins/
 	ln -srf ${linux_config}/tools/nnn/.utils ~/.config/nnn/plugins/.utils
-	ln -srf ${linux_config}/tools/nnn/anki ~/.config/nnn/plugins/anki
 	ln -srf ${linux_config}/tools/nnn/archive ~/.config/nnn/plugins/archive
 	ln -srf ${linux_config}/tools/nnn/find ~/.config/nnn/plugins/find
 	ln -srf ${linux_config}/tools/nnn/gpg ~/.config/nnn/plugins/gpg

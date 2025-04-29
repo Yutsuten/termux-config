@@ -23,8 +23,10 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
     set --export NNN_PLUG (string join ';' $shortcuts)
 
     set bookmarks
-    set --append bookmarks "i:$HOME/storage/internal/Pictures/Screenshots"
     set --append bookmarks "c:$HOME/storage/internal/DCIM/Camera"
+    set --append bookmarks "i:$HOME/storage/internal/Pictures/Screenshots"
+    set --append bookmarks "n:$HOME/.local/share/nnn"
+    set --append bookmarks "p:$HOME/projects"
     set --append bookmarks "s:$HOME/storage/sd-card/Sync"
     set --append bookmarks "w:$HOME/storage/sd-card/Sync/Pictures/Wallpapers"
     set --export NNN_BMS (string join ';' $bookmarks)

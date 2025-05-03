@@ -1,5 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/env fish
 
+set bold (tput bold)
+set reset (tput sgr0)
+
 while set choice ( \
         gum choose --header 'Termux Menu' --header.align center --header.bold --header.width (math (tput cols) - 2) --header.border rounded \
             'Open fish' 'Open nnn' 'Open password manager' 'Synchronize files' 'Upload files' 'Download files' 'Update packages' 'Update termux config' Quit \
@@ -32,18 +35,26 @@ while set choice ( \
             end
             read --prompt-str 'Press ENTER to continue...'
         case 'Update packages'
+            clear
+            echo $bold':: Update repositories'$reset
             pkg update
+            echo $bold':: Update packages'$reset
             pkg upgrade -y
+            echo $bold':: Remove old packages'$reset
             pkg autoclean
+            echo $bold':: Update pass'$reset
+            pass git pull
             read --prompt-str 'Press ENTER to continue...'
         case 'Update termux config'
             clear
-            echo 'Update linux-config'
+            echo $bold':: Update linux-config'$reset
             pushd ~/projects/linux-config && git pull
             popd
-            echo 'Update termux-config'
+            echo $bold':: Update termux-config'$reset
             pushd ~/projects/termux-config && git pull && make
             popd
+            echo $bold':: Update pass'$reset
+            pass git pull
             read --prompt-str 'Press ENTER to continue...'
         case Quit
             break

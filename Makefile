@@ -18,7 +18,7 @@ fish:
 	sed -i -e 's/(prompt_login)/(set -q SSH_TTY \&\& prompt_login)/g' -e 's/ --dir-length=0//g' ~/.config/fish/functions/fish_prompt.fish
 
 git:
-	echo '${bold}>> Git settings <<${reset}'
+	@echo '${bold}>> Git settings <<${reset}'
 	git config --global core.excludesfile ~/.config/gitignore
 	git config --global core.pager 'less -+XF -S'
 	git config --global pager.branch false
@@ -27,7 +27,7 @@ git:
 	ln -srf ${linux_config}/tools/git/gitignore ~/.config/gitignore
 
 helix:
-	echo '${bold}>> Helix settings <<${reset}'
+	@echo '${bold}>> Helix settings <<${reset}'
 	mkdir -p ~/.config/helix
 	ln -srf ${linux_config}/tools/helix/config.toml ~/.config/helix/config.toml
 	sed -i -e 's/onedark_modified/onedark/g' -e 's/file-name/file-base-name/g' ~/.config/helix/config.toml
@@ -54,6 +54,8 @@ nnn:
 	ln -srf ${linux_config}/tools/nnn/plugins/find ~/.config/nnn/plugins/find
 	ln -srf ${linux_config}/tools/nnn/plugins/gpg ~/.config/nnn/plugins/gpg
 	ln -srf ${linux_config}/tools/nnn/plugins/tts ~/.config/nnn/plugins/tts
+	ln -srf ${linux_config}/tools/nnn/plugins/newfile ~/.config/nnn/plugins/newfile
+	ln -srnf ${linux_config}/tools/nnn/file_templates ~/.config/nnn/file_templates
 	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.config/nnn/plugins/*
 	sed -i 's/mpv .*/termux-media-player play $$output_file > \/dev\/null/g' ~/.config/nnn/plugins/tts
 	find ~/.config/nnn/plugins -xtype l -delete

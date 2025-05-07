@@ -49,11 +49,11 @@ nnn:
 	rm -rf ~/.config/nnn/plugins
 	mkdir -p ~/.config/nnn/plugins ~/.local/share/nnn
 	ln -srf nnn/* ~/.config/nnn/plugins/
-	ln -srf ${linux_config}/tools/nnn/.utils ~/.config/nnn/plugins/.utils
-	ln -srf ${linux_config}/tools/nnn/archive ~/.config/nnn/plugins/archive
-	ln -srf ${linux_config}/tools/nnn/find ~/.config/nnn/plugins/find
-	ln -srf ${linux_config}/tools/nnn/gpg ~/.config/nnn/plugins/gpg
-	ln -srf ${linux_config}/tools/nnn/tts ~/.config/nnn/plugins/tts
+	ln -srf ${linux_config}/tools/nnn/plugins/.utils ~/.config/nnn/plugins/.utils
+	ln -srf ${linux_config}/tools/nnn/plugins/archive ~/.config/nnn/plugins/archive
+	ln -srf ${linux_config}/tools/nnn/plugins/find ~/.config/nnn/plugins/find
+	ln -srf ${linux_config}/tools/nnn/plugins/gpg ~/.config/nnn/plugins/gpg
+	ln -srf ${linux_config}/tools/nnn/plugins/tts ~/.config/nnn/plugins/tts
 	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.config/nnn/plugins/*
 	sed -i 's/mpv .*/termux-media-player play $$output_file > \/dev\/null/g' ~/.config/nnn/plugins/tts
 	find ~/.config/nnn/plugins -xtype l -delete

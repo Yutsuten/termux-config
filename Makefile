@@ -47,16 +47,18 @@ lftp:
 nnn:
 	@echo '${bold}>> Nnn plugins <<${reset}'
 	rm -rf ~/.config/nnn/plugins
-	mkdir -p ~/.config/nnn/plugins ~/.local/share/nnn
+	mkdir -p ~/.config/nnn/plugins ~/.config/nnn/file_templates ~/.local/share/nnn
 	ln -srf nnn/* ~/.config/nnn/plugins/
 	ln -srf ${linux_config}/tools/nnn/plugins/.utils ~/.config/nnn/plugins/.utils
 	ln -srf ${linux_config}/tools/nnn/plugins/archive ~/.config/nnn/plugins/archive
 	ln -srf ${linux_config}/tools/nnn/plugins/find ~/.config/nnn/plugins/find
 	ln -srf ${linux_config}/tools/nnn/plugins/gpg ~/.config/nnn/plugins/gpg
-	ln -srf ${linux_config}/tools/nnn/plugins/tts ~/.config/nnn/plugins/tts
 	ln -srf ${linux_config}/tools/nnn/plugins/newfile ~/.config/nnn/plugins/newfile
-	ln -srnf ${linux_config}/tools/nnn/file_templates ~/.config/nnn/file_templates
-	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.config/nnn/plugins/*
+	ln -srf ${linux_config}/tools/nnn/plugins/tts ~/.config/nnn/plugins/tts
+	ln -srf ${linux_config}/tools/nnn/file_templates/script.fish ~/.config/nnn/file_templates/script.fish
+	ln -srf ${linux_config}/tools/nnn/file_templates/script.py ~/.config/nnn/file_templates/script.py
+	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env fish' ~/.config/nnn/plugins/* ~/.config/nnn/file_templates/script.fish
+	sed -i '1c\#!/data/data/com.termux/files/usr/bin/env python' ~/.config/nnn/file_templates/script.py
 	sed -i 's/mpv .*/termux-media-player play $$output_file > \/dev\/null/g' ~/.config/nnn/plugins/tts
 	find ~/.config/nnn/plugins -xtype l -delete
 

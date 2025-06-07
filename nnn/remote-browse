@@ -43,6 +43,7 @@ while set selection (gum choose $GUM_CHOOSE_ARGS --header "Remote $cwd" (browse_
                 if test -n "$selected_files"
                     echo "Get $selected_files"
                     lftp -c "open '$REMOTE$cwd'; get '$(string join "' '" $selected_files)'"
+                    termux-media-scan $selected_files
                     break
                 else
                     echo 'No files selected!'

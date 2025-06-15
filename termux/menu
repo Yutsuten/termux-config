@@ -42,6 +42,7 @@ while set choice ( \
             pkg upgrade -y
             echo $bold':: Remove old packages'$reset
             pkg autoclean
+            apt autoremove
             echo $bold':: Update pass'$reset
             pass git pull
             read --prompt-str 'Press ENTER to continue...'

@@ -15,7 +15,7 @@ set -gx GUM_CONFIRM_PROMPT_FOREGROUND 6
 set -gx GUM_CONFIRM_SELECTED_BACKGROUND 4
 set -gx GUM_CONFIRM_SHOW_HELP 0
 
-set -gx FZF_DEFAULT_OPTS '--style=full --color=16 --layout=reverse'
+set -gx FZF_DEFAULT_OPTS '--style=full --color=16,pointer:4,border:7 --layout=reverse'
 
 fish_add_path $HOME/.local/bin
 

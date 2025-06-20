@@ -15,6 +15,8 @@ set -gx GUM_CONFIRM_PROMPT_FOREGROUND 6
 set -gx GUM_CONFIRM_SELECTED_BACKGROUND 4
 set -gx GUM_CONFIRM_SHOW_HELP 0
 
+set -gx FZF_DEFAULT_OPTS '--style=full --color=16 --layout=reverse'
+
 fish_add_path $HOME/.local/bin
 
 if status is-interactive
@@ -37,6 +39,4 @@ if status is-interactive
     abbr --add ll -- 'ls -Nlh --sort=v --group-directories-first'
     abbr --add lo -- 'ls -Noh --sort=v --group-directories-first'
     abbr --add n -- nnn
-
-    fzf --fish | source
 end

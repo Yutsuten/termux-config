@@ -6,7 +6,7 @@ function nnn --wraps=nnn --description 'The unorthodox terminal file manager.'
 
     set extra_plugins ~/.local/share/nnn/*
     if test (count $extra_plugins) -ge 1
-        ln -srf $extra_plugins ~/.config/nnn/plugins
+        ln -nf $extra_plugins ~/.config/nnn/plugins
     end
     find ~/.config/nnn/plugins -xtype l -delete
 

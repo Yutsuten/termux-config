@@ -37,7 +37,12 @@ while set choice ( \
         case 'Update packages'
             clear
             echo $bold':: Update repositories'$reset
-            pkg update || termux-change-repo
+            if not pkg update
+                if not termux-change-repo || not pkg update
+                    read --prompt-str 'Press ENTER to continue...'
+                    continue
+                end
+            end
             echo $bold':: Update packages'$reset
             pkg upgrade -y
             echo $bold':: Remove old packages'$reset

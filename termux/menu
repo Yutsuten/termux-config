@@ -38,6 +38,8 @@ while set choice ( \
             clear
             echo $bold':: Update repositories'$reset
             if not pkg update
+                echo 'First attempt failed. Update repositories and retry.'
+                read --prompt-str 'Press ENTER to continue...'
                 if not termux-change-repo || not pkg update
                     read --prompt-str 'Press ENTER to continue...'
                     continue

@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+#!/data/data/com.termux/files/usr/bin/env fish
+# ------------------------------------------------- #
+# Run termux-media-scan against the selected files. #
+# ------------------------------------------------- #
+
+source (status dirname)/.utils
+
+nnn_get_selection MEDIA-SCAN scan $argv[1] || return
+
+termux-media-scan -r $NNN_SELECTION
